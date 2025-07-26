@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Azad - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --bg-color: #0d1117;
+            --card-color: rgba(22, 27, 34, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-text: #e6edf3;
+            --secondary-text: #8b949e;
+            --accent-color: #22d3ee; /* Cyan 400 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Blobs */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+        }
+
+        .blob1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-color);
+            top: -150px;
+            left: -150px;
+            animation: move 22s infinite alternate;
+        }
+
+        .blob2 {
+            width: 300px;
+            height: 300px;
+            background: #f472b6; /* Pink 400 */
+            bottom: -100px;
+            right: -100px;
+            animation: move 27s infinite alternate-reverse;
+        }
+        
+        .blob3 {
+            width: 250px;
+            height: 250px;
+            background: #818cf8; /* Indigo 400 */
+            top: 50%;
+            left: 50%;
+            animation: move 18s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            to {
+                transform: translate(40vw, 30vh) rotate(360deg);
+            }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--card-color);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            transition: background 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(32, 38, 46, 0.7);
+        }
+
+        /* Header */
+        #navbar {
+            background: rgba(13, 17, 23, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-text);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="background-container">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="navbar" class="sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Left-aligned links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-slate-300 hover:text-white transition-colors">About</a>
+                <a href="#projects" class="text-slate-300 hover:text-white transition-colors">Projects</a>
+                <a href="#experience" class="text-slate-300 hover:text-white transition-colors">Experience</a>
+                <a href="#skills" class="text-slate-300 hover:text-white transition-colors">Skills</a>
+            </div>
+            <!-- Right-aligned Contact button -->
+            <div class="hidden md:flex items-center">
+                <a href="#contact" class="bg-[var(--accent-color)] text-black px-4 py-2 rounded-md font-semibold hover:opacity-90 transition-opacity">Contact Me</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden w-full flex justify-end">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-4 text-sm text-slate-300 hover:bg-gray-700">About</a>
+            <a href="#projects" class="block py-2 px-4 text-sm text-slate-300 hover:bg-gray-700">Projects</a>
+            <a href="#experience" class="block py-2 px-4 text-sm text-slate-300 hover:bg-gray-700">Experience</a>
+            <a href="#skills" class="block py-2 px-4 text-sm text-slate-300 hover:bg-gray-700">Skills</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-slate-300 hover:bg-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-32 md:py-40 flex items-center justify-center text-center p-6 relative z-10">
+        <div>
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white">Harsh Azad</h1>
+            <p class="text-xl md:text-2xl mt-4 font-light text-slate-300">
+                Computer Science Student
+            </p>
+            <p class="max-w-2xl mx-auto mt-5 text-base md:text-lg text-slate-400">
+                Exploring the intersection of software development and artificial intelligence. Eager to build innovative solutions and grow as an engineer.
+            </p>
+            <div class="mt-8 flex justify-center items-center space-x-6">
+                <a href="https://www.linkedin.com/in/harsh-azad" target="_blank" class="text-3xl text-slate-400 hover:text-white transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Harsh1314h" target="_blank" class="text-3xl text-slate-400 hover:text-white transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <main class="relative z-10">
+        <!-- About Me Section -->
+        <section id="about" class="pt-0 pb-24">
+            <div class="container mx-auto px-6 reveal">
+                <div class="max-w-4xl mx-auto text-center text-lg text-slate-300 leading-relaxed">
+                    <p>
+                        I'm a pre-final year Computer Science student at VIT Vellore, driven by a passion for developing robust, scalable software. With hands-on experience in building AI-powered applications and leading technical initiatives, I am actively seeking a software development internship where I can contribute to a forward-thinking team and make a meaningful impact.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects & Achievements Section -->
+        <section id="projects" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title mb-12 text-center reveal">My Projects & Achievements</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    
+                    <div class="glass-card p-8 reveal">
+                        <h3 class="text-2xl font-bold text-white mb-3">Text Assistant (RAG System)</h3>
+                        <p class="text-slate-400 mb-6">An advanced AI assistant using a Retrieval-Augmented Generation pipeline to answer queries across multiple domains.</p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-cyan-900/50 text-cyan-300 text-sm font-medium px-3 py-1 rounded-full">Streamlit</span>
+                            <span class="bg-cyan-900/50 text-cyan-300 text-sm font-medium px-3 py-1 rounded-full">ChromaDB</span>
+                            <span class="bg-cyan-900/50 text-cyan-300 text-sm font-medium px-3 py-1 rounded-full">NVIDIA LLM</span>
+                        </div>
+                        <a href="https://github.com/Harsh1314h/TEXT-ASSISTANT-FINAL.git" target="_blank" class="font-semibold text-[var(--accent-color)] hover:underline">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+
+                    <div class="glass-card p-8 reveal">
+                        <h3 class="text-2xl font-bold text-white mb-3">Retail Management 2.0</h3>
+                        <p class="text-slate-400 mb-6">A web app featuring inventory management and Gemini AI integration for smart recipe suggestions based on cart items.</p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-indigo-900/50 text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">HTML & CSS</span>
+                            <span class="bg-indigo-900/50 text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-indigo-900/50 text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">Gemini AI</span>
+                        </div>
+                        <a href="https://github.com/Harsh1314h/Retail-Management-2.0.git" target="_blank" class="font-semibold text-[var(--accent-color)] hover:underline">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                    
+                    <div class="glass-card p-8 reveal md:col-span-2">
+                        <h3 class="text-2xl font-bold text-white mb-3">Google Cloud Arcade Program</h3>
+                        <p class="text-slate-400 mb-6">Achieved the Trooper milestone by completing various labs, gaining foundational knowledge of Google Cloud Platform services.</p>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-yellow-900/50 text-yellow-300 text-sm font-medium px-3 py-1 rounded-full">Google Cloud</span>
+                            <span class="bg-yellow-900/50 text-yellow-300 text-sm font-medium px-3 py-1 rounded-full">Qwiklabs</span>
+                        </div>
+                        <a href="https://www.cloudskillsboost.google/public_profiles/f4edd642-a20f-4030-8589-9aa0564148f3" target="_blank" class="font-semibold text-[var(--accent-color)] hover:underline">View Cloud Skills Profile <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="py-24">
+            <div class="container mx-auto px-6">
+                 <h2 class="section-title mb-12 text-center reveal">My Journey</h2>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div class="reveal">
+                        <h3 class="text-2xl font-bold text-center mb-8 text-white">Experience</h3>
+                        <div class="glass-card p-6">
+                            <h4 class="text-xl font-bold text-white">Senior Core Committee Member</h4>
+                            <p class="font-medium text-slate-300 mb-2">Bulls and Bears Club - VIT Vellore</p>
+                            <ul class="list-disc list-inside text-slate-400 space-y-1">
+                                <li>Organized and managed large-scale fintech events.</li>
+                                <li>Hosted a flagship event with over 700 participants.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="reveal">
+                         <h3 class="text-2xl font-bold text-center mb-8 text-white">Education</h3>
+                         <div class="space-y-6">
+                            <div class="glass-card p-4">
+                                <h4 class="font-bold text-white">Vellore Institute of Technology</h4>
+                                <p class="text-sm text-slate-300">B.Tech in Computer Science</p>
+                                <p class="text-xs text-slate-400">2023 - Present | CGPA: 8.79</p>
+                            </div>
+                            <div class="glass-card p-4">
+                                <h4 class="font-bold text-white">Blue Heaven School</h4>
+                                <p class="text-sm text-slate-300">CBSE - Class XII | 88.7%</p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title mb-12 text-center reveal">My Tech Stack</h2>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                    <div class="glass-card p-6 reveal">
+                        <i class="fas fa-code text-4xl text-[var(--accent-color)] mb-4"></i>
+                        <h4 class="text-xl font-bold text-white">Languages</h4>
+                        <p class="text-slate-400 mt-2">Python, C++, JavaScript</p>
+                    </div>
+                    <div class="glass-card p-6 reveal">
+                        <i class="fas fa-desktop text-4xl text-[var(--accent-color)] mb-4"></i>
+                        <h4 class="text-xl font-bold text-white">Web Dev</h4>
+                        <p class="text-slate-400 mt-2">HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="glass-card p-6 reveal">
+                        <i class="fas fa-brain text-4xl text-[var(--accent-color)] mb-4"></i>
+                        <h4 class="text-xl font-bold text-white">AI, DB & Cloud</h4>
+                        <p class="text-slate-400 mt-2">Gen-AI, RAG, ChromaDB, Google Cloud</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Section -->
+    <footer id="contact" class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-4">Let's Connect</h2>
+            <p class="max-w-lg mx-auto text-slate-400 mb-8">
+                I'm actively looking for internship roles and am open to collaboration. If you have an exciting opportunity, I'd love to hear from you at <a href="mailto:azadh2902@gmail.com" class="text-[var(--accent-color)] hover:underline">azadh2902@gmail.com</a>.
+            </p>
+            <div class="flex justify-center items-center space-x-6">
+                <a href="https://www.linkedin.com/in/harsh-azad" target="_blank" class="text-3xl text-slate-400 hover:text-white transition-transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Harsh1314h" target="_blank" class="text-3xl text-slate-400 hover:text-white transition-transform hover:scale-110"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="text-slate-500 mt-16 text-sm">&copy; 2024 Harsh Azad. Designed & Built from Scratch.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation script
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        document.addEventListener('DOMContentLoaded', revealOnScroll);
+
+        // Mobile menu script
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
